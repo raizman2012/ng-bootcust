@@ -1,0 +1,66 @@
+<div class="snippet" data-ng-controller="TableActionsController" categories="table,panel,actions,button,dropdown,ready">
+    <h4 class="snippet_title">{{snippetId}}</h4>
+    <!-- comment -->
+    <div class="snippet_body">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Customers
+                <div class="pull-right">
+                    <div class="btn-group btn-group-xs" role="group">
+                        <button class="btn btn-default" title="reload"
+                                ng-click="reload()">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                        <button class="btn btn-default" title="reload"
+                                ng-click="reload()">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <div class="btn-group btn-group-xs" role="group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                aria-expanded="false">
+                            Options
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="">auto reload</a></li>
+                            <li><a ng-click="">push reload</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-bordered table-condensed table-hover">
+                <thead>
+                <tr>
+                    <th translate>name</th>
+                    <th translate>address</th>
+                    <th translate>age</th>
+                    <th translate>work</th>
+                    <th translate>income</th>
+                    <th translate>registrated</th>
+                    <th translate>status</th>
+                    <th translate>likes</th>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="obj in customers">
+
+                    <td>{{obj.name}}</td>
+                    <td>{{obj.address}}</td>
+                    <td>{{obj.age}}</td>
+                    <td>{{obj.work}}</td>
+                    <td>{{obj.income}}</td>
+                    <td>{{obj.registrated_date}}</td>
+                    <td>{{obj.status}}</td>
+                    <td>{{obj.likes}}</td>
+                </tr>
+                </tbody>
+
+            </table>
+            <div class="panel-footer">
+                Reloaded at: {{reloaded}}
+            </div>
+        </div>
+
+    </div>
+</div>

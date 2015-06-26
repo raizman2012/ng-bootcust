@@ -1,0 +1,43 @@
+<div class="snippet" data-ng-controller="TableActionsInrowController" categories="table,actions,button,ready">
+    <h4 class="snippet_title">{{snippetId}}</h4>
+    <!-- comment -->
+    <div class="snippet_body">
+        <table class="table table-bordered table-condensed table-hover">
+            <thead>
+            <tr>
+                <th translate>name</th>
+                <th translate>address</th>
+                <th translate>age</th>
+                <th translate>work</th>
+                <th translate>income</th>
+                <th translate>registrated</th>
+                <th translate>status</th>
+                <th width="70px"><i class=" fa fa-bolt" /></th>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="obj in selectableCustomers.getList()"
+                    ng-click="selectableCustomers.selectIndex($index)"
+                    ng-class="{active : selectableCustomers.getSelectedIndex() == $index }">
+
+                <td>{{obj.name}}</td>
+                <td>{{obj.address}}</td>
+                <td>{{obj.age}}</td>
+                <td>{{obj.work}}</td>
+                <td>{{obj.income}}</td>
+                <td>{{obj.registrated_date}}</td>
+                <td>{{obj.status}}</td>
+                <td ng-if="selectableCustomers.getSelectedIndex() !== $index"></td>
+                <td ng-if="selectableCustomers.getSelectedIndex() === $index">
+                    <i class="btn btn-default btn-xs fa fa-trash" ng-click="remove($index)" title="remove" />
+                    <i class="btn btn-default btn-xs fa fa-edit" ng-click="edit()" title="edit"/>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+        <div class="alert alert-warning" ng-if="timeoutPromise !== undefined">
+            <strong>Customer {{lastRemoved.name}}</strong> was removed. <button class="pull-right btn btn-prime btn-xs"
+                                                                                ng-click="undoLastRemove()">Undo</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="snippet" data-ng-controller="ButtonToggleController" categories="button,toggle,ready">
+    <h4 class="snippet_title">{{snippetId}}</h4>
+    <!-- comment -->
+    <div class="snippet_body">
+        <div class="btn-group" role="group">
+
+            <button ng-repeat="btn_id in optionsSelectable.list" type="button"
+                    class="btn ng-class:optionsSelectable.multiSelections[$index] ? 'btn-primary' : 'btn-default'"
+                    ng-click="optionsSelectable.multiToggleSelect($index)" title="{{btn_id}}">
+                <i class="fa fa-{{btn_id}}"></i>
+            </button>
+
+        </div>
+    </div>
+</div>

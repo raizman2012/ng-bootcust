@@ -1,0 +1,84 @@
+<div class="snippet" data-ng-controller="TableFilterController" categories="table,filter,ready">
+    <h4 class="snippet_title">{{snippetId}}</h4>
+    <!-- comment -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+
+            <h4><strong>Search customer:</strong></h4>
+
+            <form class="form-horizontal" autocomplete="off">
+                <fieldset ng-disabled="customersData.saving">
+                    <div class="form-group">
+                        <label for="nameLong" class="col-sm-2 control-label">Full name</label>
+
+                        <div class="col-sm-6">
+                            <input ng-model="fullName" type="text" class="form-control"
+                                   id="nameLong" placeholder="full name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="age" class="col-sm-2 control-label">Age</label>
+
+                        <div class="col-sm-4">
+                            <input ng-model="age" type="range" min="0" max="100"
+                                   id="age"
+                                   placeholder="">
+
+                        </div>
+
+                        <label for="city" class="col-sm-2 control-label">Status</label>
+
+                        <div class="col-sm-4">
+                            <input ng-model="status" type="text" class="form-control"
+                                   id="city" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group slide-container" ng-show="searchPanelOpen">
+                        <label for="regDate" class="col-sm-2 control-label">Registerated at:</label>
+                        <div class="col-sm-4">
+                            <input id="regDate" type="date" class="form-control" datepicker-popup ng-model="dt" max-date="'2015-06-22'"
+                                   ng-required="true"  />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-4">
+                            <icon-button action="searchAction"></icon-button>
+                            <a class="" ng-click="toggleSearchPanel()"> Advanced</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+
+
+        </div>
+
+        <table class="table table-bordered table-condensed table-hover ng-class:customersData.loading ? 'table-loading':'';">
+            <thead>
+            <tr>
+                <th>name</th>
+                <th>age<span sort-th sorting="customersData.sorting" pname="'age'"/></th>
+                <th>income</th>
+                <th>registrated</th>
+                <th>status</th>
+
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="obj in customersData.list" ng-click="customersData.toggleIndex($index)"
+                ng-class="{active : customersData.getSelectedIndex() == $index }">
+
+                <td>{{obj.name}}</td>
+                <td>{{obj.age}}</td>
+                <td>{{obj.income}}</td>
+                <td>{{obj.registrated_date}}</td>
+                <td>{{obj.status}}</td>
+
+            </tr>
+            </tbody>
+
+        </table>
+
+        <div class="panel-footer">
+            found:
+        </div>
+    </div>
+</div>

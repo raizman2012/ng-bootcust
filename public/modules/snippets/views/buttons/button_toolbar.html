@@ -1,0 +1,14 @@
+<div class="snippet" data-ng-controller="ButtonToolbarController" categories="button,toolbar,ready">
+    <h4 class="snippet_title">{{snippetId}}</h4>
+    <!-- comment -->
+    <div class="snippet_body">
+        <div class="btn-group" role="group">
+
+            <button ng-repeat="btn_id in options" type="button"
+                    class="btn btn-default" title="{{btn_id}}">
+                <i class="fa fa-{{btn_id}}"></i>
+            </button>
+
+        </div>
+    </div>
+</div>

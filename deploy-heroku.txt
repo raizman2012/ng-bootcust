@@ -1,0 +1,7 @@
+https://ng-bootcust.herokuapp.com/ | https://git.heroku.com/ng-bootcust.git
+
+heroku config:add BUILDPACK_URL=https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt.git
+
+git push heroku master
+
+heroku config:set NODE_ENV=production

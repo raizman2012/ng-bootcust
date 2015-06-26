@@ -1,0 +1,10 @@
+<div class="snippet" data-ng-controller="ButtonBooleanController" categories="button,boolean">
+    <h4 class="snippet_title">{{snippetId}}</h4>
+    <!-- comment -->
+    <div class="snippet_body">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" ng-click="toggle()" class="btn ng-class:stateBoolean ? 'btn-success' : 'btn-default'">true</button>
+            <button type="button" ng-click="toggle()" class="btn ng-class:!stateBoolean ? 'btn-danger' : 'btn-default'">false</button>
+        </div>
+    </div>
+</div>

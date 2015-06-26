@@ -1,0 +1,33 @@
+<div class="snippet" data-ng-controller="TableSimpleController" categories="table,simple,ready">
+    <h4 class="snippet_title">{{sampleId}}</h4>
+
+     <div class="snippet_body">
+        <table class="table table-bordered table-condensed">
+            <thead>
+            <tr>
+                <th translate>name</th>
+                <th translate>address</th>
+                <th translate>age</th>
+                <th translate>work</th>
+                <th translate>income</th>
+                <th translate>registrated</th>
+                <th translate>status</th>
+                <th translate>likes</th>
+            </thead>
+            <tbody>
+            <tr ng-if="customerGrouped === undefined" data-ng-repeat="obj in customers">
+
+                <td>{{obj.name}}</td>
+                <td>{{obj.address}}</td>
+                <td>{{obj.age}}</td>
+                <td>{{obj.work}}</td>
+                <td>{{obj.income}}</td>
+                <td>{{obj.registrated_date}}</td>
+                <td>{{obj.status}}</td>
+                <td>{{obj.likes}}</td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<section data-ng-controller="SnippetsController">
+    <div class="row">
+        <div class="col-md-3">
+            <h3 translate>SNIPPETS_STATUS</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Path</th>
+                    <th>Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(key, value) in snippets">
+                    <td>
+                        <a ui-sref="snippet({snippetId : goToSnippet(key)})"
+                           class="btn btn-link" title="go to snippet page">
+                            {{key}}
+                        </a>
+                        <a ui-sref="snippet({snippetId : goToSnippet(key)})"
+                           class="btn btn-link pull-right btn-xs" title="go to snippet page">
+                            <i class="fa fa-arrow-right"></i>
+                        </a></td>
+                    <td><span ng-if="value.ready" class="label label-success">
+                       Ready
+                   </span><span ng-if="!value.ready" class="label label-warning">
+                       Not ready
+                   </span></td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+</section>

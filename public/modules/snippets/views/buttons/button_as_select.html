@@ -1,0 +1,16 @@
+<div class="snippet" data-ng-controller="ButtonAsSelectController" categories="button,select,ready">
+    <h4 class="snippet_title">{{sampleId}}</h4>
+    <!-- comment -->
+    <div class="snippet_body">
+        <div ng-repeat="btn_id in optionsSelectable.list" style="display: inline">
+            <button
+                    class="btn ng-class:optionsSelectable.getSelectedIndex() == $index ? 'btn-primary' : 'btn-default'"
+                    ng-click="optionsSelectable.selectIndex($index)">{{btn_id}}
+            </button>
+        </div>
+        <br /><span>&nbsp;</span>
+        <div class="alert alert-info" ng-if="optionsSelectable.getSelectedIndex() != -1">
+            <strong>Selected:</strong>{{optionsSelectable.list[optionsSelectable.getSelectedIndex()]}}
+        </div>
+    </div>
+</div>

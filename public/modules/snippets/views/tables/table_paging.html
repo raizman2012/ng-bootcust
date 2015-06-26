@@ -1,0 +1,99 @@
+<div class="snippet" data-ng-controller="TablePagingController" categories="table,paging,ready">
+    <h4 class="snippet_title">{{snippetId}}</h4>
+    <!-- comment -->
+    <div class="snippet_body">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Paging
+                <div class="pull-right btn-group btn-group-xs" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                            aria-expanded="false">
+                        {{pagerTypes.getSelectedObject()}}
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li ng-repeat="option in pagerTypes.list"><a ng-click="pagerTypes.selectIndex($index)">{{option}}</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+        <table class="table table-bordered table-condensed">
+            <thead>
+            <tr>
+                <th translate>name</th>
+                <th translate>address</th>
+                <th translate>age</th>
+                <th translate>work</th>
+                <th translate>income</th>
+                <th translate>registrated</th>
+                <th translate>status</th>
+                <th translate>likes</th>
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="obj in customers | offset:paging.currentOffset:paging.itemsPerPage">
+
+                <td>{{obj.name}}</td>
+                <td>{{obj.address}}</td>
+                <td>{{obj.age}}</td>
+                <td>{{obj.work}}</td>
+                <td>{{obj.income}}</td>
+                <td>{{obj.registrated_date}}</td>
+                <td>{{obj.status}}</td>
+                <td>{{obj.likes}}</td>
+            </tr>
+            </tbody>
+
+        </table>
+        </div>
+        <div>
+
+            <nav ng-if="pagerTypes.getSelectedObject() === 'default'">
+                <ul class="pagination">
+                    <li ng-class="paging.hasPrev() == false ? 'disabled' : ''">
+                        <a  ng-click="paging.prev()" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li ng-click="paging.setPage(n)" ng-repeat="n in paging.pageNumbers"><a href="#">{{n}}</a></li>
+                    <li ng-class="paging.hasNext() == false ? 'disabled' : ''">
+                        <a ng-disabled="!paging.hasNext()" ng-click="paging.next()" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav ng-if="pagerTypes.getSelectedObject() === 'prev_next'">
+                <ul class="pager">
+                    <li ng-class="paging.hasPrev() == false ? 'previous disabled' : 'previous'">
+                        <a  ng-click="paging.prev()" aria-label="Previous">
+                            <span aria-hidden="true">&larr;</span> Prev</a>
+                        </a>
+                    </li>
+                    <li ng-class="paging.hasNext() == false ? 'next disabled' : 'next'">
+                        <a ng-disabled="!paging.hasNext()" ng-click="paging.next()" aria-label="Next">
+                            Next <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <nav ng-if="pagerTypes.getSelectedObject() === 'more'">
+                <ul class="pager">
+                    <li ng-class="paging.hasNext() == false ? 'disabled' : ''">
+                        <a ng-disabled="!paging.hasNext()" ng-click="paging.next()" aria-label="Next">
+                            More <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Pager inner data</div>
+            <div class="panel-body">{{paging}}</div>
+        </div>
+
+
+    </div>
+</div>

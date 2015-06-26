@@ -1,0 +1,34 @@
+<div class="snippet" data-ng-controller="ButtonStatesController" categories="button,states,ready">
+    <h4 class="snippet_title">{{snippetId}}</h4>
+    <!-- comment -->
+    <div class="snippet_body">
+        <div class="alert alert-info" ng-show="!buttons['load'].loading">Press 'Load' button</div>
+        <div class="alert alert-warning" ng-show="buttons['load'].loading">Wait... Load disabled for 2 sec</div>
+        <div>
+            <button type="button" class="btn btn-primary btn-lg"
+                    ng-click="pressButton('load')" ng-disabled="buttons['load'].disabled">Load
+            </button>
+        </div>
+        <br/>
+
+        <div class="alert alert-info" ng-show="!buttons['save'].loading && buttons['save'].result === undefined">Press 'Save' button</div>
+        <div class="alert alert-warning" ng-show="buttons['save'].loading">Wait... Saving...</div>
+        <div class="alert alert-success" ng-show="buttons['save'].result === 'success'">Success ! Saved!</div>
+
+        <button type="button"
+                class="btn btn-lg ng-class:buttons['save'].result  == undefined ? 'btn-primary' : 'btn-success'"
+                ng-click="pressButton('save')"
+                ng-disabled="buttons['save'].disabled">
+            <span class="fa ng-class:buttons['save'].loading ? 'fa-circle-o-notch fa-spin' : (buttons['save'].result == undefined) ?  'fa-save' : 'fa-check'"
+                  aria-hidden="true"></span> Save
+        </button>
+
+        <button type="button" class="btn btn-primary btn-lg btn-onchange-success value-{{buttons['save'].loading}}">
+            <span class="glyphicon glyphicon-trash"></span> Click
+        </button>
+
+        <button type="button" class="btn btn-primary btn-lg" ng-disabled="buttons['delete'].disabled">Disabled
+        </button>
+    </div>
+</div>
+</div>

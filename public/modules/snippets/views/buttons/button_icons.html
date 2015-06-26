@@ -1,0 +1,26 @@
+<div class="snippet" data-ng-controller="ButtonIconsController" categories="button,icons,ready">
+    <h4 class="snippet_title">{{snippetId}}</h4>
+    <!-- comment -->
+    <div class="snippet_body">
+        <h4>With text:</h4>
+        <div class="btn-group" role="group">
+
+            <button ng-repeat="btn_id in optionsSelectable.list" type="button"
+                    class="btn ng-class:optionsSelectable.getSelectedIndex() == $index ? 'btn-primary' : 'btn-default'"
+                    ng-click="optionsSelectable.selectIndex($index)">
+                <i class="fa fa-align-{{btn_id}}"></i> {{btn_id}}
+            </button>
+
+        </div>
+        <h4>Without text, with title on mouseover:</h4>
+        <div class="btn-group" role="group">
+
+            <button ng-repeat="btn_id in optionsSelectable.list" type="button"
+                    class="btn ng-class:optionsSelectable.getSelectedIndex() == $index ? 'btn-primary' : 'btn-default'"
+                    ng-click="optionsSelectable.selectIndex($index)" title="{{btn_id}}">
+                <i class="fa fa-align-{{btn_id}}"></i>
+            </button>
+
+        </div>
+    </div>
+</div>

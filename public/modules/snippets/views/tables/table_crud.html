@@ -1,0 +1,153 @@
+<div class="snippet" data-ng-controller="TableCrudController" categories="table,crud,ready">
+    <h4 class="snippet_title">{{snippetId}}</h4>
+    <!-- comment -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Customers
+            <div class="pull-right">
+
+                <div class="btn-group btn-group-xs" role="group">
+
+                    <button class="btn btn-default" title="reload"
+                            ng-click="reload()">
+                        <i class="fa fa-refresh ng-class:customersData.loading || customersData.saving ? 'fa-spin':'';"></i>
+                    </button>
+                    <button class="btn btn-default" title="search"
+                            ng-click="searchPanelOpen = !searchPanelOpen">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="panel-heading" ng-show="searchPanelOpen">
+            Search:
+
+        </div>
+
+        <table class="table table-bordered table-condensed table-hover ng-class:customersData.loading ? 'table-loading':'';">
+            <thead>
+            <tr>
+                <th>name</th>
+                <th>address</th>
+                <th>age<span sort-th sorting="customersData.sorting" pname="'age'"/></th>
+                <th>work</th>
+                <th>income</th>
+                <th>registrated</th>
+                <th>status</th>
+
+            </thead>
+            <tbody>
+            <tr data-ng-repeat="obj in customersData.list" ng-click="customersData.toggleIndex($index)"
+                ng-class="{active : customersData.getSelectedIndex() == $index }">
+
+                <td>{{obj.name}}</td>
+                <td>{{obj.address}}</td>
+                <td>{{obj.age}}</td>
+                <td>{{obj.work}}</td>
+                <td>{{obj.income}}</td>
+                <td>{{obj.registrated_date}}</td>
+                <td>{{obj.status}}</td>
+
+            </tr>
+            </tbody>
+
+        </table>
+
+        <div class="panel-footer" ng-show="asyncMessages.objectsMap['customersCrud'][messageId] !== undefined">
+            <div class="alert alert-{{asyncMessages.objectsMap['customersCrud'][messageId].type}}" role="alert">
+                {{asyncMessages.objectsMap['customersCrud'][messageId].msg}}
+            </div>
+        </div>
+
+        <div class="panel-footer" ng-show="customersData.adding">
+            <div class="slide-container" ng-show="customersData.adding">
+                <h4><strong>New customer:</strong></h4>
+
+                <form class="form-horizontal" autocomplete="off">
+                    <fieldset ng-disabled="customersData.saving">
+                        <div class="form-group">
+                            <label for="nameLong" class="col-sm-2 control-label">Full name</label>
+
+                            <div class="col-sm-10">
+                                <input ng-model="customersData.itemInEdit.name" type="text" class="form-control"
+                                       id="nameLong" placeholder="full name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="col-sm-2 control-label">Age</label>
+
+                            <div class="col-sm-4">
+                                <input ng-model="customersData.itemInEdit.age" type="text" class="form-control" id="age"
+                                       placeholder="">
+                            </div>
+
+                            <label for="city" class="col-sm-2 control-label">City</label>
+
+                            <div class="col-sm-4">
+                                <input ng-model="customersData.itemInEdit.address" type="text" class="form-control"
+                                       id="city" placeholder="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Send email
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="panel-footer" ng-show="customersData.editing">
+            <div class="slide-container" ng-show="customersData.editing">
+                <h4><strong>Edit customer:</strong></h4>
+
+                <form class="form-horizontal" autocomplete="off">
+                    <fieldset ng-disabled="customersData.saving">
+                        <div class="form-group">
+                            <label for="nameLong" class="col-sm-2 control-label">Full name</label>
+
+                            <div class="col-sm-10">
+                                <input ng-model="customersData.itemInEdit.name" type="text" class="form-control"
+                                       id="nameLong" placeholder="full name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="col-sm-2 control-label">Age</label>
+
+                            <div class="col-sm-4">
+                                <input ng-model="customersData.itemInEdit.age" type="text" class="form-control" id="age"
+                                       placeholder="">
+                            </div>
+
+                            <label for="city" class="col-sm-2 control-label">City</label>
+
+                            <div class="col-sm-4">
+                                <input ng-model="customersData.itemInEdit.address" type="text" class="form-control"
+                                       id="city" placeholder="">
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="panel-footer">
+
+            <icon-button action="customersData.actions.add"></icon-button>
+
+            <icon-button action="customersData.actions.edit"></icon-button>
+
+            <icon-button action="customersData.actions.trash"></icon-button>
+
+            <icon-button action="customersData.actions.save"></icon-button>
+
+            <icon-button action="customersData.actions.close" btn-classes="'pull-right'"></icon-button>
+
+        </div>
+    </div>
+</div>
