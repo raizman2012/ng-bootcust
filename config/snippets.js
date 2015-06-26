@@ -53,7 +53,7 @@ module.exports = {
 
     readMetatags : function(files, res, cwd) {
        lodash.forEach(files , function(fileName) {
-            console.log(fileName);
+            //console.log(fileName);
             var str = fs.readFileSync(cwd+fileName, 'utf8');
             var $ = cheerio.load(str);
 

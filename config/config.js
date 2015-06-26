@@ -8,7 +8,7 @@ module.exports = {
 		keywords: 'angular, bootstrap'
 	},
 
-	port: 3000,
+	port: process.env.PORT || 3000,
 	publicStaticContentDir : './public',
 	assets : ['./assets/css.js', './assets/javascripts.js','./assets/less.js'],
 	templateEngine: 'swig',

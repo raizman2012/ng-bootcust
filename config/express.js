@@ -81,20 +81,20 @@ module.exports = function() {
 	snippets.readMetatags(glob.sync('modules/snippets/views/**/*.html', {cwd: config.templatesDir}), allSnippets, config.templatesDir);
 
 	// create status html
-	var status = '<html>\n';
-	status += '<table border>';
-	_.each(allSnippets, function(value, key) {
-		var statusColor = 'white';
-		if (value.ready !== undefined) {
-			statusColor = 'green';
-		}
-		status += '<tr>';
-		status += '<td>'+path.basename(key)+'</td>';
-		status += '<td bgcolor=\"'+statusColor+'\">STATUS</td>';
-		status += '</tr>\n';
-	});
-	status += '\n</table>';
-	status += '\n</html>';
+	//var status = '<html>\n';
+	//status += '<table border>';
+	//_.each(allSnippets, function(value, key) {
+	//	var statusColor = 'white';
+	//	if (value.ready !== undefined) {
+	//		statusColor = 'green';
+	//	}
+	//	status += '<tr>';
+	//	status += '<td>'+path.basename(key)+'</td>';
+	//	status += '<td bgcolor=\"'+statusColor+'\">STATUS</td>';
+	//	status += '</tr>\n';
+	//});
+	//status += '\n</table>';
+	//status += '\n</html>';
 	//fs.writeFile('status.html', status);
 
 	console.log('create routers');

@@ -13,8 +13,8 @@ console.log(chalk.yellow('Init the express application'));
 var app = require('./config/express')();
 
 // Start the app by listening on <port>
-var port = process.env.PORT || config.port;
-console.log(chalk.yellow('Starting the app by listening on port:', port));
+
+console.log(chalk.yellow('Starting the '+config.app.title+' app by listening on port:', config.port));
 
 app.listen(config.port);
 
