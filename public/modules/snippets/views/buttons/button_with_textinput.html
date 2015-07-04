@@ -1,7 +1,42 @@
-<div class="snippet" data-ng-controller="ButtonWithTextinputController" categories="button,with,textinput">
-    <h4 class="snippet_title">{{sampleId}}</h4>
+<div class="snippet" data-ng-controller="ButtonWithTextinputController" categories="button,with,textinput,ready">
+    <h4 class="snippet_title">Button and text input</h4>
     <!-- comment -->
     <div class="snippet_body">
-        Hello, {{sampleId}}
+        <div class="row">
+            <div class="col-md-6"><h4>Simplest</h4>
+
+                <div class="input-group">
+                    <input type="text" ng-model="value" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="search()">Search</button>
+                </span>
+                </div>
+            </div>
+            <div class="col-md-6"><h4>With more option in dropdown</h4>
+
+                <div class="input-group">
+                    <input type="text" ng-model="valueAdvanced" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="search()">Search</button>
+                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+      <ul class="dropdown-menu">
+          <li><a ng-click="searchAdvanced('Pictures')">Pictures</a></li>
+          <li><a ng-click="searchAdvanced('Icons')">Icons</a></li>
+          <li><a ng-click="searchAdvanced('Texts')">Texts</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a ng-click="searchAdvanced('All')">All</a></li>
+      </ul>
+                </span>
+                </div>
+            </div>
+        </div>
+
+
+        <h4>{{message}}</h4>
+        <!-- /input-group -->
     </div>
 </div>

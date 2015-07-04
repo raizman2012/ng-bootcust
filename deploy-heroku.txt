@@ -6,4 +6,3 @@ git push heroku master
 
 heroku config:set NODE_ENV=production
 
-logsss dd1

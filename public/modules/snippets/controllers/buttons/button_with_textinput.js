@@ -3,10 +3,20 @@
 /**
  * Angular controller for 'button_with_textinput' snippet
  */
-angular.module('snippets').controller('ButtonWithTextinputController', ['$scope', 'clientMockData',
-    function ($scope, clientMockData) {
+angular.module('snippets').controller('ButtonWithTextinputController', ['$scope',
+    function ($scope) {
 
         $scope.snippetId = 'button_with_textinput';
-        console.log($scope.snippetId+ ' ok. data:', clientMockData.customers);
+
+        $scope.value = '';
+        $scope.valueAdvanced = '';
+        $scope.message = 'Press the button';
+        $scope.search = function() {
+            $scope.message = 'search for:'+$scope.value;
+        }
+
+        $scope.searchAdvanced = function(option) {
+            $scope.message = 'advanced search for:'+$scope.valueAdvanced+' option:'+option;
+        }
     }
 ]);
