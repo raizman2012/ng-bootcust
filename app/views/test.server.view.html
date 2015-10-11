@@ -1,32 +1,66 @@
 <html>
 <script>
 
-    function checkBrackets(str) {
-        var bracketsOpen = {'(': ')', '{': '}', '[': ']'}, bracketsClose = {')': '(', '}': '{', ']': '['};
-        var stack = [];
-        for (var i = 0; i < str.length; i++) {
-            var c = str.charAt(i);
-            if (bracketsOpen[c] !== undefined) {
-                stack.push(c);
-                continue;
+    //5 lines and in less than 60 tokens.
+function Min(a, b) {
+    return a > b ? b : a;
+
+}
+    function func(s, a, b) {
+        var match_empty = /^$/;
+        if (s.match(match_empty)) {
+            return -1;
+        }
+        else {
+
+            var aIndex = s.lastIndexOf(a);
+            var bIndex = s.lastIndexOf(b);
+
+            var i = 0;
+            var aIndex=-1;
+            var bIndex=-1;
+
+            while ((aIndex==-1) && (bIndex==-1) && (i<s.length))
+            {
+                if (s.substring(i, i+1) == a)
+                    aIndex=i;
+                if (s.substring(i, i+1) == b)
+                    bIndex=i;
+                i++;
             }
-            if (bracketsClose[c] !== undefined) {
-                var mustBeInStack = bracketsClose[c];
-                if (stack[stack.length - 1] === mustBeInStack)
-                    stack.pop();
+            //console.log('aIndex ', aIndex, ' bIndex ', bIndex);
+
+
+            if (aIndex != -1) {
+                if (bIndex == -1)
+                    return aIndex;
                 else
-                    return false;
+                    return Min(aIndex, bIndex);
+            }
+            else {
+                if (bIndex != -1)
+                    return bIndex;
+                else
+                    return -1;
             }
         }
-        return stack.length == 0;
     }
 
-   console.log(checkBrackets(''));  // true
-    console.log(checkBrackets('()'));  // true
-    console.log(checkBrackets('a(b)')); // true
-    console.log(checkBrackets('[{}]')); // true
-    console.log(checkBrackets('[(]')); // false
-    console.log(checkBrackets('}{'));  // false
-    console.log(checkBrackets('z([{}-()]{a})')); // true
+    function func1(s, a, b) {
+        if  (s.match(/^$/)) return -1;
+        var aIndex = s.indexOf(a);
+        if (aIndex == -1) return s.indexOf(b);
+        var bIndex = s.indexOf(b);
+        return bIndex != -1 ? Min(aIndex, bIndex) : -1;
+    }
+    console.log(func1('', 's', 'f'));
+    console.log(func1('goosfoo', 's', 'f'));
+    console.log(func1('gofosfoo', 's', 'f'));
+
+    console.log('----');
+    console.log(func('', 's', 'f'));
+    console.log(func('goosfoo', 's', 'f'));
+    console.log(func('gofosfoo', 's', 'f'));
+
 </script>
 </html>
